@@ -20,7 +20,7 @@
             {
                 Console.Clear(); 
 
-                scoreCounter.DisplayScore(); 
+                scoreCounter.DisplayScoreAndLives(); 
 
                 string userAnswer;
 
@@ -40,7 +40,7 @@
                     Console.WriteLine("\nНажмите Enter, чтобы продолжить...");
                     Console.ReadLine();
                     Console.Clear(); 
-                    scoreCounter.DisplayScore(); 
+                    scoreCounter.DisplayScoreAndLives(); 
                 } while (true);
 
                 if (userAnswer == question.CorrectAnswer)
@@ -51,6 +51,12 @@
                 else
                 {
                     Console.WriteLine($"Неверно! Правильный ответ: {question.CorrectAnswer}");
+                    scoreCounter.DecrementLives();
+                }
+                if (scoreCounter.Lives == 0)
+                {
+                    Console.WriteLine("У вас закончились жизни. Игра завершена.");
+                    break; 
                 }
 
                 Console.WriteLine("\nНажмите Enter, чтобы продолжить...");
@@ -59,6 +65,7 @@
 
             Console.Clear(); 
             Console.WriteLine("\nИгра завершена. Спасибо за участие!");
+            scoreCounter.DisplayFinalResults();
         }
     }
 }

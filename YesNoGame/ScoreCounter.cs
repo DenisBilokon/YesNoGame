@@ -3,20 +3,36 @@
     class ScoreCounter
     {
         private int score;
+        private int lives;
+
+        public int Score { get { return score; } }
+        public int Lives { get { return lives; } }
+
+        public ScoreCounter(int initialLives = 3)
+        {
+            score = 0;
+            lives = initialLives;
+        }
 
         public void IncrementScore() 
         {
             score++;
         }
-
-        public int GetScore()
+        public void DecrementLives()
         {
-            return score;
+            lives--;
         }
 
-        public void DisplayScore()
+        public void DisplayScoreAndLives()
         {
             Console.WriteLine($"Очки: {score}");
+            Console.WriteLine($"Жизни: {new string('♥', lives)}");
+        }
+        public void DisplayFinalResults()
+        {
+            Console.WriteLine($"\nОкончательные результаты:");
+            Console.WriteLine($"Очки: {score}");
+            Console.WriteLine($"Оставшиеся жизни: {lives}");
         }
     }
 
