@@ -4,11 +4,18 @@ class Program
 {
     static void Main()
     {
-        string filePath = @"E:\GameQuestions\Questions1.txt";
-        List<Question> questions = QuestionLoader.LoadQuestionsFromFile(filePath);
+        CategoryManager categoryManager = new CategoryManager();
+        List<Question> selectedQuestions = categoryManager.ChooseCategory();
 
-        Game game = new Game();
-        game.PlayGame(questions);
+        if (selectedQuestions.Count > 0)
+        {
+            Game game = new Game();
+            game.PlayGame(selectedQuestions);
+        }
+        else
+        {
+            Console.WriteLine("Извините, выбранная категория не содержит вопросов.");
+        }
     }
 }
 

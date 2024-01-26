@@ -7,4 +7,19 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="GameQuestions\**" />
+    <EmbeddedResource Remove="GameQuestions\**" />
+    <None Remove="GameQuestions\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Questions\GeographyQuestions.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Questions\ScienceQuestions.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
